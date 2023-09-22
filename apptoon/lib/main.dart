@@ -1,4 +1,6 @@
-import 'package:apptoon/Page/login.dart';
+import 'package:apptoon/Pages/homepage.dart';
+import 'package:apptoon/screen/home.dart';
+import 'package:apptoon/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -6,7 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-   // name: 'toon', // ใช้ชื่อ Firebase App ที่มีอยู่แล้ว
+    //name: 'toon', // ใช้ชื่อ Firebase App ที่มีอยู่แล้ว ในกรณีที่รันบนมือถือให้เปิด รันบน Chrome ให้ปิด
     options: FirebaseOptions(
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_AUTH_DOMAIN",
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.pink, // สีหลัก
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
