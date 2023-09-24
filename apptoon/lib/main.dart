@@ -10,7 +10,7 @@ void main() async {
   await Firebase.initializeApp(
     //name: 'toon', // ใช้ชื่อ Firebase App ที่มีอยู่แล้ว ในกรณีที่รันบนมือถือให้เปิด รันบน Chrome ให้ปิด
     options: FirebaseOptions(
-      apiKey: "YOUR_API_KEY",
+      apiKey: " AIzaSyBg7mH2TTRJy1PyMRqbdRXXJj-0IgU_SEI ",
       authDomain: "YOUR_AUTH_DOMAIN",
       projectId: "YOUR_PROJECT_ID",
       storageBucket: "YOUR_STORAGE_BUCKET",

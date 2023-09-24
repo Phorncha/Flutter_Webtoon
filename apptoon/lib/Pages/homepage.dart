@@ -1,56 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Manga List'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              // Handle search button press
-            },
-          ),
-        ],
+        title: Text('ข้อมูลจาก Firebase Firestore'),
       ),
-      body: ListView(
-        children: [
-          Card(
-            child: ListTile(
-              title: Text('ชื่อเรื่อง 1'), // Replace with manga title
-              subtitle: Text('คะแนน 1'), // Replace with manga score
-              leading:
-                  Image.asset('images/logo1.png'), // Replace with manga image
-              trailing: ElevatedButton(
-                // Use ElevatedButton instead of FlatButton
-                child: Text('อ่าน'), // Replace with desired action text
-                onPressed: () {
-                  // Handle button press for the first manga item
-                },
-              ),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('ชื่อเรื่อง 2'), // Replace with manga title
-              subtitle: Text('คะแนน 2'), // Replace with manga score
-              leading:
-                  Image.asset('images/logo1.png'), // Replace with manga image
-              trailing: ElevatedButton(
-                // Use ElevatedButton instead of FlatButton
-                child: Text('อ่าน'), // Replace with desired action text
-                onPressed: () {
-                  // Handle button press for the second manga item
-                },
-              ),
-            ),
-          ),
-          // Add more Card widgets for additional manga items here
-        ],
+      body: StreamBuilder(
+        stream:
+            FirebaseFirestore.instance.collection('storys').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          var documents = snapshot.data!.docs;
+          return ListView.builder(
+            itemCount: documents.length,
+            itemBuilder: (context, index) {
+              var document = documents[index];
+              var data = document.data() as Map<String, dynamic>;
+              // แสดงข้อมูลที่คุณต้องการแสดง
+              return ListTile(
+                title: Text(data['ชื่อฟิลด์']),
+                subtitle: Text(data['รายละเอียด']),
+              );
+            },
+          );
+        },
       ),
     );
   }
