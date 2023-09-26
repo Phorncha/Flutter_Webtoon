@@ -66,11 +66,14 @@ flutter {
 }
 
 dependencies {
-  implementation platform("com.google.firebase:firebase-bom:32.3.1")
+  
     implementation "com.google.firebase:firebase-auth-ktx"
     implementation "com.google.firebase:firebase-firestore-ktx"
     implementation "com.google.firebase:firebase-analytics-ktx"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.firebase:firebase-core:latest_version'
-    implementation 'com.google.firebase:firebase-firestore:latest_version'
+    implementation 'com.google.firebase:firebase-core:20.0.0'
+    implementation platform("com.google.firebase:firebase-bom:32.3.1")
+    implementation 'com.google.firebase:firebase-core'
+
+
 }

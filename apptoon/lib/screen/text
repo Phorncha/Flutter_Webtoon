@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ข้อมูลจาก Firebase Firestore'),
+      ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('storys').snapshots(), // ชื่อ collection
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('เกิดข้อผิดพลาด: ${snapshot.error.toString()}'),
+            );
+          }
+
+          var documents = snapshot.data?.docs; // Use ?. for null safety
+
+          if (documents == null || documents.isEmpty) {
+            return Center(
+              child: Text('ไม่พบข้อมูลใน collection "storys"'),
+            );
+          }
+
+          return ListView.builder(
+            itemCount: documents.length,
+            itemBuilder: (context, index) {
+              var document = documents[index];
+              var data = document.data() as Map<String, dynamic>;
+              var title = data['title'];
+              var day = data['day'];
+              var id = data['id'];
+
+              return ListTile(
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Title: $title'),
+                    Text('Day: $day'),
+                    Text('ID: $id'),
+                  ],
+                ),
+                //subtitle: Text('ID: $id'),
+              );
+
+            },
+          );
+        },
+      ),
+    );
+  }
+}

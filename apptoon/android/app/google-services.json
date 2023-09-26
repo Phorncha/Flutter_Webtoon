@@ -8,36 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:828435202153:android:86130e4dacd81583f5e2f8",
-        "android_client_info": {
-          "package_name": "com.example.app_etoon"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "828435202153-7vsp143fj58o88ea88vln7n57ppuq0uq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD8_tWNt54gaFWqqGqhHalJUDnYaqohm7o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "828435202153-7vsp143fj58o88ea88vln7n57ppuq0uq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:828435202153:android:be26f871a1f1dc69f5e2f8",
+        "mobilesdk_app_id": "1:828435202153:android:a2ac55f453c8824cf5e2f8",
         "android_client_info": {
           "package_name": "com.example.apptoon"
         }
