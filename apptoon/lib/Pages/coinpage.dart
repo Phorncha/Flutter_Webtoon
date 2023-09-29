@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyCoinPage extends StatelessWidget {
-  const MyCoinPage({super.key});
+  const MyCoinPage();
 
   @override
   Widget build(BuildContext context) {
